@@ -7,15 +7,14 @@ package org.jetbrains.kotlin.idea.actions.internal
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.application.ApplicationManager
 import org.jetbrains.kotlin.idea.KotlinPluginUtil
 
 class KotlinThrowExceptionAction : AnAction() {
-    override fun update(e: AnActionEvent?) {
+    override fun update(e: AnActionEvent) {
         super.update(e)
 
-        if (e != null && KotlinPluginUtil.isPatched()) {
-            e.presentation.isEnabledAndVisible = true
-        }
+        e.presentation.isEnabledAndVisible = KotlinPluginUtil.isPatched() || ApplicationManager.getApplication().isInternal
     }
 
     override fun actionPerformed(e: AnActionEvent) {
