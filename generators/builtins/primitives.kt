@@ -227,21 +227,21 @@ class GeneratePrimitives(out: PrintWriter) : BuiltInsSourceGenerator(out) {
     private fun compareByDomainCapacity(type1: PrimitiveType, type2: PrimitiveType): Int =
         if (type1.isIntegral && type2.isIntegral) type1.byteSize - type2.byteSize else type1.ordinal - type2.ordinal
 
-    private fun docForConversionFromFloatingToIntegral(floating: PrimitiveType, integral: PrimitiveType): String {
-        check(floating.isFloatingPoint)
-        check(integral.isIntegral)
+    private fun docForConversionFromFloatingToIntegral(fromFloating: PrimitiveType, toIntegral: PrimitiveType): String {
+        check(fromFloating.isFloatingPoint)
+        check(toIntegral.isIntegral)
 
-        val thisName = floating.capitalized
-        val otherName = integral.capitalized
+        val thisName = fromFloating.capitalized
+        val otherName = toIntegral.capitalized
 
-        return if (compareByDomainCapacity(integral, PrimitiveType.INT) < 0) {
+        return if (compareByDomainCapacity(toIntegral, PrimitiveType.INT) < 0) {
             """
              * The resulting `$otherName` value is equal to `this.toInt().to$otherName()`.
              */
             """
         } else {
             """
-             * The factional part, if any, is rounded down.
+             * The fractional part, if any, is rounded down.
              * Returns zero if this `$thisName` value is `NaN`, [$otherName.MIN_VALUE] if it's less than `$otherName.MIN_VALUE`,
              * [$otherName.MAX_VALUE] if it's bigger than `$otherName.MAX_VALUE`.
              */
@@ -330,14 +330,14 @@ class GeneratePrimitives(out: PrintWriter) : BuiltInsSourceGenerator(out) {
         }
     }
 
-    private fun docForConversionFromIntegralToFloating(integral: PrimitiveType, floating: PrimitiveType): String {
-        check(integral.isIntegral)
-        check(floating.isFloatingPoint)
+    private fun docForConversionFromIntegralToFloating(fromIntegral: PrimitiveType, toFloating: PrimitiveType): String {
+        check(fromIntegral.isIntegral)
+        check(toFloating.isFloatingPoint)
 
-        val thisName = integral.capitalized
-        val otherName = floating.capitalized
+        val thisName = fromIntegral.capitalized
+        val otherName = toFloating.capitalized
 
-        return if (integral == PrimitiveType.LONG || integral == PrimitiveType.INT && floating == PrimitiveType.FLOAT) {
+        return if (fromIntegral == PrimitiveType.LONG || fromIntegral == PrimitiveType.INT && toFloating == PrimitiveType.FLOAT) {
             """
              * The resulting value is the closest `$otherName` to this `$thisName` value.
              * In case when this `$thisName` value is exactly between two `$otherName`s,
@@ -354,22 +354,22 @@ class GeneratePrimitives(out: PrintWriter) : BuiltInsSourceGenerator(out) {
 
     private fun generateConversions(kind: PrimitiveType) {
         val thisName = kind.capitalized
-        for (otherKing in PrimitiveType.exceptBoolean) {
-            val otherName = otherKing.capitalized
-            val doc = if (kind == otherKing) {
+        for (otherKind in PrimitiveType.exceptBoolean) {
+            val otherName = otherKind.capitalized
+            val doc = if (kind == otherKind) {
                 "    /** Returns this value. */"
             } else {
                 val detail = if (kind in PrimitiveType.integral) {
-                    if (otherKing.isIntegral) {
-                        docForConversionFromIntegralToIntegral(kind, otherKing)
+                    if (otherKind.isIntegral) {
+                        docForConversionFromIntegralToIntegral(kind, otherKind)
                     } else {
-                        docForConversionFromIntegralToFloating(kind, otherKing)
+                        docForConversionFromIntegralToFloating(kind, otherKind)
                     }
                 } else {
-                    if (otherKing.isIntegral) {
-                        docForConversionFromFloatingToIntegral(kind, otherKing)
+                    if (otherKind.isIntegral) {
+                        docForConversionFromFloatingToIntegral(kind, otherKind)
                     } else {
-                        docForConversionFromFloatingToFloating(kind, otherKing)
+                        docForConversionFromFloatingToFloating(kind, otherKind)
                     }
                 }
 
