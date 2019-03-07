@@ -884,6 +884,15 @@ public final class kotlin/collections/ArraysKt {
 	public static final fun dropWhile ([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 	public static final fun dropWhile ([SLkotlin/jvm/functions/Function1;)Ljava/util/List;
 	public static final fun dropWhile ([ZLkotlin/jvm/functions/Function1;)Ljava/util/List;
+	public static final fun elementAt ([BI)B
+	public static final fun elementAt ([CI)C
+	public static final fun elementAt ([DI)D
+	public static final fun elementAt ([FI)F
+	public static final fun elementAt ([II)I
+	public static final fun elementAt ([JI)J
+	public static final fun elementAt ([Ljava/lang/Object;I)Ljava/lang/Object;
+	public static final fun elementAt ([SI)S
+	public static final fun elementAt ([ZI)Z
 	public static final fun fill ([BBII)V
 	public static final fun fill ([CCII)V
 	public static final fun fill ([DDII)V
@@ -1941,6 +1950,7 @@ public final class kotlin/collections/CollectionsKt {
 	public static final fun dropLastWhile (Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 	public static final fun dropWhile (Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 	public static final fun elementAt (Ljava/lang/Iterable;I)Ljava/lang/Object;
+	public static final fun elementAt (Ljava/util/List;I)Ljava/lang/Object;
 	public static final fun elementAtOrElse (Ljava/lang/Iterable;ILkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun elementAtOrNull (Ljava/lang/Iterable;I)Ljava/lang/Object;
 	public static final fun emptyList ()Ljava/util/List;
@@ -2319,6 +2329,10 @@ public final class kotlin/collections/UArraysKt {
 	public static final fun dropLast-nggk6HY ([SI)Ljava/util/List;
 	public static final fun dropLast-qFRl0hI ([II)Ljava/util/List;
 	public static final fun dropLast-r7IrZao ([JI)Ljava/util/List;
+	public static final fun elementAt-PpDY95g ([BI)B
+	public static final fun elementAt-nggk6HY ([SI)S
+	public static final fun elementAt-qFRl0hI ([II)I
+	public static final fun elementAt-r7IrZao ([JI)J
 	public static final fun fill-2fe2U9s ([IIII)V
 	public static synthetic fun fill-2fe2U9s$default ([IIIIILjava/lang/Object;)V
 	public static final fun fill-EtDCXyQ ([SSII)V
@@ -4884,6 +4898,7 @@ public final class kotlin/text/StringsKt {
 	public static final fun dropLastWhile (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ljava/lang/String;
 	public static final fun dropWhile (Ljava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/CharSequence;
 	public static final fun dropWhile (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ljava/lang/String;
+	public static final fun elementAt (Ljava/lang/CharSequence;I)C
 	public static final fun endsWith (Ljava/lang/CharSequence;CZ)Z
 	public static final fun endsWith (Ljava/lang/CharSequence;Ljava/lang/CharSequence;Z)Z
 	public static final fun endsWith (Ljava/lang/String;Ljava/lang/String;Z)Z

@@ -222,9 +222,8 @@ public inline operator fun UShortArray.component5(): UShort {
  */
 @SinceKotlin("1.3")
 @ExperimentalUnsignedTypes
-@kotlin.internal.InlineOnly
-public inline fun UIntArray.elementAt(index: Int): UInt {
-    return get(index)
+public fun UIntArray.elementAt(index: Int): UInt {
+    return elementAtOrElse(index) { throw IndexOutOfBoundsException("index: $index, size: $size}") }
 }
 
 /**
@@ -234,9 +233,8 @@ public inline fun UIntArray.elementAt(index: Int): UInt {
  */
 @SinceKotlin("1.3")
 @ExperimentalUnsignedTypes
-@kotlin.internal.InlineOnly
-public inline fun ULongArray.elementAt(index: Int): ULong {
-    return get(index)
+public fun ULongArray.elementAt(index: Int): ULong {
+    return elementAtOrElse(index) { throw IndexOutOfBoundsException("index: $index, size: $size}") }
 }
 
 /**
@@ -246,9 +244,8 @@ public inline fun ULongArray.elementAt(index: Int): ULong {
  */
 @SinceKotlin("1.3")
 @ExperimentalUnsignedTypes
-@kotlin.internal.InlineOnly
-public inline fun UByteArray.elementAt(index: Int): UByte {
-    return get(index)
+public fun UByteArray.elementAt(index: Int): UByte {
+    return elementAtOrElse(index) { throw IndexOutOfBoundsException("index: $index, size: $size}") }
 }
 
 /**
@@ -258,9 +255,8 @@ public inline fun UByteArray.elementAt(index: Int): UByte {
  */
 @SinceKotlin("1.3")
 @ExperimentalUnsignedTypes
-@kotlin.internal.InlineOnly
-public inline fun UShortArray.elementAt(index: Int): UShort {
-    return get(index)
+public fun UShortArray.elementAt(index: Int): UShort {
+    return elementAtOrElse(index) { throw IndexOutOfBoundsException("index: $index, size: $size}") }
 }
 
 /**

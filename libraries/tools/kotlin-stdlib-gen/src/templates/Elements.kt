@@ -281,8 +281,12 @@ object Elements : TemplateGroupBase() {
         }
 
         specialFor(CharSequences, Lists, ArraysOfObjects, ArraysOfPrimitives, ArraysOfUnsigned) {
-            inlineOnly()
-            body { "return get(index)" }
+            val size = if (f == CharSequences) "length" else "size"
+            body {
+                """
+                return elementAtOrElse(index) { throw IndexOutOfBoundsException("index: $index, $size: $$size}") }
+                """
+            }
         }
     }
 

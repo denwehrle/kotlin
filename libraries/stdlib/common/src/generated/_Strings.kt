@@ -20,9 +20,8 @@ import kotlin.random.*
  * 
  * @sample samples.collections.Collections.Elements.elementAt
  */
-@kotlin.internal.InlineOnly
-public inline fun CharSequence.elementAt(index: Int): Char {
-    return get(index)
+public fun CharSequence.elementAt(index: Int): Char {
+    return elementAtOrElse(index) { throw IndexOutOfBoundsException("index: $index, length: $length}") }
 }
 
 /**

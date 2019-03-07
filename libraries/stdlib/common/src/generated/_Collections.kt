@@ -80,9 +80,8 @@ public fun <T> Iterable<T>.elementAt(index: Int): T {
  * 
  * @sample samples.collections.Collections.Elements.elementAt
  */
-@kotlin.internal.InlineOnly
-public inline fun <T> List<T>.elementAt(index: Int): T {
-    return get(index)
+public fun <T> List<T>.elementAt(index: Int): T {
+    return elementAtOrElse(index) { throw IndexOutOfBoundsException("index: $index, size: $size}") }
 }
 
 /**
